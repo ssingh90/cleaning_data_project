@@ -3,13 +3,18 @@ setwd("~/coursera/Getting data/getdata_projectfiles_UCI HAR Dataset/UCI HAR Data
 subject_train <- read.table("../train/subject_train.txt")
 x_train <- read.table("../train/X_train.txt")
 y_train <- read.table("../train/Y_train.txt")
+dim(subject_train)
+dim(x_train)
+dim(y_train)
 
 
 setwd("~/coursera/Getting data/getdata_projectfiles_UCI HAR Dataset/UCI HAR Dataset/test")
 x_test <- read.table("X_test.txt")
 y_test <- read.table("y_test.txt")
 subject_test <- read.table("subject_test.txt")
-
+dim(x_test)
+dim(y_test)
+dim(subject_test)
 
 test <- cbind(subject_test, y_test, x_test)
 train <- cbind(subject_train, y_train, x_train)
@@ -42,6 +47,5 @@ library(dplyr)
 
 all4 <- group_by(all3, subject, activity_name)
 
-
 tidy_data <- all4 %>% summarise_each(funs(mean))
-write.table(tidy_data, "c:/Users//sanskriti/Documents/coursera/tidy_data.txt",quote=F, row.names=F);
+
